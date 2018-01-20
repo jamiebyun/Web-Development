@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{page_title}}</title>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+<nav class="navbar navbar-default" id="nav_bar">
+   <div class="container">
+       <div class="navbar-header">
+           <a href="index.html" class="navbar-brand navbar-link stock">
+               <img src="images/logo.png" class="img-responsive" id="logo" alt=""><strong>Stock App</strong>
+           </a>
+           <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+           </button>
+       </div>
+
+       <div class="collapse navbar-collapse" id="navcol">
+          <ul class="nav navbar-nav navbar-right" id="nav_list">
+              <li><a href="stock.html">Home</a></li>
+              <li><a href="https://www.alphavantage.co/" target="_blank">Open Stock API</a></li>
+          </ul>
+
+
+       </div>
+
+   </div>
+    
+</nav> 
+
+<div class="jumbotron" style="margin-bottom:0px; background-color:#4aa1f3; color:white;">
+    <h2 class="text-center" style="font-size:40px; font-weight:600;">💎 THE STOCK APP @JamieB</h2>
+</div>
+
+<div class="container" style="height:300px;">
+    <div class="row" >
+        <div class="col-md-12" style="margin-bottom:10px;">
+            <span id="error" class="text-center"></span>
+        </div>
+        
+        <div class="row form-group form-inline" id="cityDiv" style="text-align:left;">
+            <h2>👉 Search stock price by date!</h2>
+            <div style="height:30px;"> </div>
+            <form method="POST" action="/stock">
+                <input type="text" name="company" id="company" class="form-control" placeholder="ex)AMZN(Amazon)"  >
+                <input type="text" name="date" id="date" class="form-control" placeholder="ex) 2017-11-06" >
+                <input type="submit" value="Check" name="gobtn"</input>
+            </form>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:30px">
+        <table class="table table-bordered">
+           <div id="header"  class="text-center"></div>
+
+            <thead>
+                <tr>
+                    <th>COMPANY</th>
+                    <th>DATE ($)</th>
+                    <th>LOW ($)</th>
+                    <th>HIGH ($)</th>
+                    <th>OPEN ($)</th>
+                    <th>CLOSE ($)</th>
+                    <th>VOLUME</th>
+                </tr>
+            </thead>
+
+            <tbody id="stock">
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+<div class="container" style="height:300px;">
+    <div class="row" >
+        <div class="col-md-12" style="margin-bottom:10px;">
+            <span id="error" class="text-center"></span>
+        </div>
+
+        <div class="row form-group form-inline" id="cityDiv" style="text-align:left;">
+            <h2>👉 Compare company stocks by date! </h2>
+            <div id="company" style="height:30px;"> </div>
+            <form method="POST" action="/stocktwo">
+                <input type="text" name="company1" id="company" class="form-control" placeholder="Company 1"  >
+                <input type="text" name="company2" id="company" class="form-control" placeholder="Company 2"  >
+                <input type="text" name="company3" id="company" class="form-control" placeholder="Company 3"  >
+                <input type="text" name="date" id="date" class="form-control" placeholder="ex) 2017-11-06" >
+                <input type="submit" value="Check" name="gobtn"</input>
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <div class="row" style="margin-top:30px">
+        <table class="table table-bordered">
+           <div id="header"  class="text-center"></div>
+
+            <thead>
+                <tr>
+                    <th>COMPANY A</th>
+                    <th>COMPANY B</th>
+                    <th>COMPANY C</th>
+                </tr>
+            </thead>
+
+            <tbody id="stock">
+
+            </tbody>
+
+        </table>
+    </div>
+
+    {% if prompt %}<div class= 'prompt' style="text-align:center;" >{{prompt}}</div>{% endif %}
+
+
+</div>
+
+
+<div class="footer">
+    <div class="container">
+        <div class="row text-center" style="padding-top:30px;">
+            <p style="color:white">Copyright &copy; Stock App</p>
+        </div>
+    </div>
+</div>
+
+      
+</body>
+</html>
